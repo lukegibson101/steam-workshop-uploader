@@ -32,6 +32,8 @@ The tool will warn you and exit early if it detects no progress for >60s in "pre
 
 That's it. ~350 lines, no abstractions, no UI.
 
+There IS no UI — the tool is designed to be driven from a terminal or, more pleasantly, from [Claude Code](https://claude.com/claude-code) via the bundled [skill](skill/). The skill teaches Claude the "restart Steam first" rule so you don't have to remember it yourself.
+
 ---
 
 ## Install
