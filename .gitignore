@@ -1,0 +1,19 @@
+# Build output
+bin/
+obj/
+
+# Fetched dependencies (run fetch-deps.sh to populate)
+lib/
+native/
+
+# Per-publish artefacts — keep workshop.example.json instead
+workshop.json
+preview.jpg
+preview.png
+steam_appid.txt
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo

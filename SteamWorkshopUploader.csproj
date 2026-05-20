@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SteamWorkshopUploader</RootNamespace>
+    <AssemblyName>SteamWorkshopUploader</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Steamworks.NET">
+      <HintPath>lib/Steamworks.NET.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="native/libsteam_api.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>libsteam_api.so</Link>
+    </None>
+    <None Include="steam_appid.txt" Condition="Exists('steam_appid.txt')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

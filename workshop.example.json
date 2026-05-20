@@ -1,0 +1,13 @@
+{
+  "appid": 0,
+  "publishedfileid": "",
+  "contentfolder": "./content",
+  "previewfile": "preview.jpg",
+  "visibility": 1,
+  "title": "My Workshop Item",
+  "description": "Steam BBCode supported: [b]bold[/b], [h2]heading[/h2], [list][*]item[/list], [url=https://example.com]link[/url].",
+  "tags": [],
+  "metadata": "",
+  "language": "English",
+  "filetype": "Community"
+}
