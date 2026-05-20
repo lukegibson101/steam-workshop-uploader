@@ -142,6 +142,16 @@ tail -f ~/.local/share/Steam/logs/workshop_log.txt
 ```
 If you see `Upload starting` without a matching `Upload finished` within a couple of minutes, kill the uploader, restart Steam, retry.
 
+### Upload succeeds, file size on Workshop page is correct, but subscribers don't see the mod in-game
+
+The game's mod scanner expects content under a specific folder layout that differs from your uploaded structure. Check what *other* subscribed mods for the same app look like on your machine — most older Steam games with mod support require the mod to live in a NAMED SUBFOLDER inside the uploaded item (e.g. `<workshop-item>/MyMod/ccmod.json`, not `<workshop-item>/ccmod.json`).
+
+If you need to wrap, do it with `rsync -a --delete <build>/ <wrapper>/MyMod/` or `cp -aL`, then point `contentfolder` in the manifest at the wrapper.
+
+### Subscribers see `Failed updating depot ... (Disk write failure) "...creating symlink..."`
+
+You uploaded content that contained a symlink (probably your wrapper subfolder). SteamUGC preserves symlinks AS symlinks in the depot, and the subscriber's client fails trying to materialise them locally. Re-stage the wrapper using `rsync` or `cp -aL` so the subfolder is a real directory, then re-upload.
+
 ---
 
 ## Why this exists

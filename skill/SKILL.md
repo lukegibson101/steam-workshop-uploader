@@ -32,6 +32,9 @@ Run in this order, fix issues before proceeding:
    - `cat <tool-dir>/steam_appid.txt` and compare with `jq -r .appid <manifest-path>`.
    - If mismatched: rewrite `steam_appid.txt` to match. Steam silently refuses cross-app calls if these disagree.
 4. **Sanity-check content and preview paths exist**: resolve them relative to the manifest dir and `ls` them.
+5. **Check the content folder structure matches the target game's convention**:
+   - Some games (e.g. C&C Remastered, App 1213210) require the mod files to live in a NAMED SUBFOLDER inside the uploaded content (`<contentfolder>/<ModName>/ccmod.json`), not at the root. Subscribers' clients download fine but the in-game mod scanner never finds the mod. Verify against other subscribed mods of the same app on the user's machine before publishing.
+   - **Never use symlinks** for the wrapper subfolder — SteamUGC preserves symlinks AS symlinks in the depot, and other subscribers fail to install with "Disk write failure" when their client tries to materialise them. Use `rsync -a --delete <build>/ <wrapper>/<ModName>/` or `cp -aL` to produce a real directory.
 
 ## The Steam restart prompt
 
